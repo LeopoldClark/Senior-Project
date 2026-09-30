@@ -269,7 +269,16 @@ State nextState(uint32_t now) {
 
         case State::startup:
             request = Request::stop;
-            return elapsed >= startms ? State::stopped : State::startup;
+
+            if (elapsed >= startms) {
+
+                return State::stopped;
+
+            } else {
+
+                return State::startup;
+
+            }
 
         case State::stopped:
             
